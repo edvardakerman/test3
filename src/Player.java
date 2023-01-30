@@ -8,9 +8,6 @@ public class Player {
     		add(new Item("Wand", "Cast a spell!"));
         }
     };
-    
-    
-    //Item Wand = ;
 
     
     Player(String name, Location start){
@@ -45,6 +42,9 @@ public class Player {
             case "help":
             	help();
             	break;
+            case "get":
+            	getItem(arr[1]);
+            	break;
             default: 
                 System.out.println("Fel");
                 break;
@@ -65,6 +65,17 @@ public class Player {
     	System.out.println("looking..");
     	for (Item item : this.Location.getItems()) {
 	    	System.out.println(item.getName());
+		}
+    }
+    
+    void getItem(String Name){
+    	    	
+    	for (Item item : this.Location.getItems()) {
+    		if (Name.equals(item.getName())) {
+    			this.Location.getItems();
+    			this.items.add(item);
+    			System.out.println(item.getName() + " was added to your items");
+    		}
 		}
     }
     
