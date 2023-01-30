@@ -10,7 +10,7 @@ class Game {
 	    locations = new ArrayList<>();
 	    
 	    // Create Rooms
-	    // Rooms inside {Entrance Hall, Great Hall, Hagrids, Dungens, Dorms, Dungeons}
+	    // This is a test comment!!!
 	    Location EntranceHall = new Inside("The Entrance Hall", "Welcome to hogwarts, this is the school of magic");
 	    Location GreatHall = new Inside("The Great Hall", "Time to eat?");
 	    Location Hagrids = new Inside("Hagrids Hut", "hagrid says hello");
