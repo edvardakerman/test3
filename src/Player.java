@@ -42,11 +42,14 @@ public class Player {
             case "help":
             	help();
             	break;
-            case "get":
-            	getItem(arr[1]);
+            case "take":
+            	takeItem(arr[1]);
+            	break;
+            case "use":
+            	useItem(arr[1]);
             	break;
             default: 
-                System.out.println("Fel");
+                System.out.println("Unvalid command, type 'help' for more info");
                 break;
         }
     }
@@ -68,13 +71,23 @@ public class Player {
 		}
     }
     
-    void getItem(String Name){
+    void takeItem(String Name){
     	    	
     	for (Item item : this.Location.getItems()) {
     		if (Name.equals(item.getName())) {
-    			this.Location.getItems();
     			this.items.add(item);
-    			System.out.println(item.getName() + " was added to your items");
+    			System.out.println(item.getName() + " was added to your items");   			
+    		}
+		}
+    	this.Location.removeItem(this.items.get(this.items.size() - 1));
+    }
+    
+    void useItem(String Name){
+    	
+    	for (Item item : this.items) {
+    		if (Name.equals(item.getName())) {
+    			System.out.println("You used " + item.getName());
+    			System.out.println(item.getDesc());
     		}
 		}
     }

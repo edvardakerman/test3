@@ -39,9 +39,11 @@ class Game {
 	    
 	    // Create Items
 	    Item CloakofInvisibility = new Item("Cloak of Invisibility", "With this you can sneak around");
-	    
+	    Item Elderwand = new Item("Elderwand", "With the Elderwand you can cast even more powerfull spells");
+	    	    
 	    // Assign Items to rooms
 	    Dorms.setItem(CloakofInvisibility);
+	    Dungens.setItem(Elderwand);
 	    
 	    
 	    

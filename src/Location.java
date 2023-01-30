@@ -29,6 +29,10 @@ public class Location {
     	this.items.add(item);
     }
     
+    public void removeItem(Item item){
+    	this.items.remove(item);
+    }
+    
     public ArrayList<Item> getItems(){
         return this.items;
     }
@@ -36,6 +40,7 @@ public class Location {
     public String describeYourself(){
         return this.Description;
     }
+    
     
     // separate class four paths, room has paths between connecting them, function that takes 2 locations and direction.
 
