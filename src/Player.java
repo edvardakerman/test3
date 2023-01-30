@@ -1,6 +1,16 @@
+import java.util.ArrayList;
+
 public class Player {
     private String Name;
     private Location Location;
+    private ArrayList<Item> items = new ArrayList<Item>() {
+    	{	
+    		add(new Item("Wand", "Cast a spell!"));
+        }
+    };
+    
+    
+    //Item Wand = ;
 
     
     Player(String name, Location start){
@@ -10,6 +20,14 @@ public class Player {
 
     public String getName(){
         return this.Name;
+    }
+    
+    public void addItem(Item item) {
+    	this.items.add(item);
+    }
+    
+    public ArrayList<Item> getItems(){
+        return this.items;
     }
 
     public void doCommand(String cmd){
@@ -21,6 +39,9 @@ public class Player {
             case "look":
                 look();
                 break;
+            case "items":
+            	inventory();
+            	break;
             case "help":
             	help();
             	break;
@@ -44,6 +65,13 @@ public class Player {
     	System.out.println("looking..");
     	for (Item item : this.Location.getItems()) {
 	    	System.out.println(item.getName());
+		}
+    }
+    
+    void inventory(){
+    	System.out.println("Current inventory");
+    	for (Item item : this.items) {
+	    	System.out.println(item.getName() + ", " + item.getDesc());
 		}
     }
 

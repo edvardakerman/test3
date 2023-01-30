@@ -74,7 +74,6 @@ class Game {
         return this.locations;
     }
 
-    // Help(){}
 
 
 
