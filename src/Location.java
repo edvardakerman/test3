@@ -1,8 +1,12 @@
+import java.util.*;
+
 public class Location {
     private String Name;
     private String Description;
     private Boolean Locked;
     private Location North, East, South, West;
+    private ArrayList<Item> items = new ArrayList<Item>();
+
 
     Location(String name, String desc){
         this.Description = desc;
@@ -19,6 +23,14 @@ public class Location {
     
     public void setLock(Boolean lock){
     	this.Locked = lock;
+    }
+    
+    public void setItem(Item item){
+    	this.items.add(item);
+    }
+    
+    public ArrayList<Item> getItems(){
+        return this.items;
     }
 
     public String describeYourself(){

@@ -18,6 +18,12 @@ public class Player {
             case "move":
                 moveTo(arr[1]);
                 break;
+            case "look":
+                look();
+                break;
+            case "help":
+            	help();
+            	break;
             default: 
                 System.out.println("Fel");
                 break;
@@ -27,6 +33,19 @@ public class Player {
     public Location getLocation(){
         return this.Location;
     }
+    
+    void help(){
+    	System.out.println("Valid commands:");
+    	System.out.println("1. move (followed by a direction, east/west/north/south)");
+    	System.out.println("2. spell (followed by a spell, wingardium leviosa)");
+    }
+    
+    void look(){
+    	System.out.println("looking..");
+    	for (Item item : this.Location.getItems()) {
+	    	System.out.println(item.getName());
+		}
+    }
 
     void moveTo(String direction){
     	
@@ -35,6 +54,7 @@ public class Player {
     	} else {
         	System.out.println("invalid direction");
     	}
+        System.out.println("You are now in " + this.Location.getName() + ", " + this.Location.describeYourself());
  	
     }
     

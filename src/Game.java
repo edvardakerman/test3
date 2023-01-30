@@ -10,14 +10,12 @@ class Game {
 	    locations = new ArrayList<>();
 	    
 	    // Create Rooms
-	    // This is a test comment!!!
 	    Location EntranceHall = new Inside("The Entrance Hall", "Welcome to hogwarts, this is the school of magic");
 	    Location GreatHall = new Inside("The Great Hall", "Time to eat?");
 	    Location Hagrids = new Inside("Hagrids Hut", "hagrid says hello");
 	    Location Dorms = new Inside("The Dorms", "Welcome to the student accomidations");
 	    Location Dungens = new Inside("The Dungens", "lock out for trolls");
 	    
-	    // Outide {Forbidden forest, Quad, Herbology}
 	    Location Quad = new Outside("The Quad", "Welcome to the Quad");
 	    Location Herbology = new Outside("Herbology", "Time to grow plants");
 	    Location ForbiddenForest = new Outside("The Forbidden Forest", "Scary, ooooooh");
@@ -39,6 +37,12 @@ class Game {
 	    
 	    Herbology.setPath(Courtyard, "north");
 	    
+	    // Create Items
+	    Item CloakofInvisibility = new Item("Cloak of Invisibility", "With this you can sneak around");
+	    
+	    // Assign Items to rooms
+	    Dorms.setItem(CloakofInvisibility);
+	    
 	    
 	    
 	    // add to array
@@ -56,7 +60,6 @@ class Game {
         while (true) {
             String command;
             
-            System.out.println("You are now in " + player.getLocation().getName() + ", " + player.getLocation().describeYourself());
             System.out.println("What do you want to do?");
             command = keyboard.nextLine();
             player.doCommand(command);
