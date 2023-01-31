@@ -15,5 +15,7 @@ class Item {
         return this.description;
     }
     
+    // doCommand ??
+    
     
 }

@@ -33,13 +33,12 @@ class Game {
 	    Quad.setPath(Herbology, "east");
 	    Quad.setPath(Hagrids, "west");
 	    
-	    Hagrids.setPath(ForbiddenForest, "west");
-	    
+	    Hagrids.setPath(ForbiddenForest, "west");	    
 	    Herbology.setPath(Courtyard, "north");
 	    
 	    // Create Items
-	    Item CloakofInvisibility = new Item("Cloak of Invisibility", "With this you can sneak around");
-	    Item Elderwand = new Item("Elderwand", "With the Elderwand you can cast even more powerfull spells");
+	    Wearable CloakofInvisibility = new Wearable("Cloak of Invisibility", "With this you can sneak around");
+	    Wand Elderwand = new Wand("Elderwand", "With the Elderwand you can cast even more powerfull spells");
 	    	    
 	    // Assign Items to rooms
 	    Dorms.setItem(CloakofInvisibility);
@@ -54,10 +53,10 @@ class Game {
     public void run() {
         String name;
             
-        System.out.println("Welcome to the adventure game!\nWhat is your name?");
+        System.out.println("Welcome to the school of magic, Hogwarts!\nWhat is your name?");
         name = keyboard.nextLine();
         player = new Player(name, locations.get(0));
-        System.out.println("Hello " + name + ", welcome to this magical world of wonder! You can move around by typing north/south/west/east. You will have to learn more commands as you play the game! (Hint: there is a command \"help\").");
+        System.out.println("Hello " + name + ", welcome to this magical world of wonder! You can move around by typing move north/south/west/east. You will have to learn more commands as you play the game! (Hint: there is a command \"help\").");
         
         while (true) {
             String command;
@@ -66,7 +65,7 @@ class Game {
             command = keyboard.nextLine();
             player.doCommand(command);
         }	    
-        }
+    }
 
     public Player getPlayer(){
         return this.player;
@@ -75,9 +74,5 @@ class Game {
     public ArrayList<Location> getLocations(){
         return this.locations;
     }
-
-
-
-
 
 }

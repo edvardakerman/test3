@@ -3,9 +3,10 @@ import java.util.ArrayList;
 public class Player {
     private String Name;
     private Location Location;
+    private Wand wand = new Wand("Wand", "Cast a spell!");
     private ArrayList<Item> items = new ArrayList<Item>() {
     	{	
-    		add(new Item("Wand", "Cast a spell!"));
+    		add(wand);
         }
     };
 
@@ -45,8 +46,11 @@ public class Player {
             case "take":
             	takeItem(arr[1]);
             	break;
-            case "use":
+            case "wear":
             	useItem(arr[1]);
+            	break;
+            case "cast":
+            	castSpell(arr[1]);
             	break;
             default: 
                 System.out.println("Unvalid command, type 'help' for more info");
@@ -71,23 +75,36 @@ public class Player {
 		}
     }
     
+    void castSpell(String cast) {
+    	switch (cast) {
+		case "alohomora":
+			this.wand.alohomora();
+			break;
+		case "lumos":
+			this.wand.lumos();
+			break;	
+		default:
+		}
+    }
+    
     void takeItem(String Name){
     	    	
     	for (Item item : this.Location.getItems()) {
     		if (Name.equals(item.getName())) {
     			this.items.add(item);
-    			System.out.println(item.getName() + " was added to your items");   			
+    			System.out.println(item.getName() + " was added to your items");		
     		}
 		}
     	this.Location.removeItem(this.items.get(this.items.size() - 1));
     }
     
-    void useItem(String Name){
-    	
+    void useItem(String Name){  	
     	for (Item item : this.items) {
     		if (Name.equals(item.getName())) {
-    			System.out.println("You used " + item.getName());
-    			System.out.println(item.getDesc());
+    			if(item instanceof Wearable) {
+    				  Wearable subClassElem = (Wearable) item;
+    				  subClassElem.wear();
+    			}
     		}
 		}
     }
