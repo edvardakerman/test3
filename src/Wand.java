@@ -15,7 +15,22 @@ class Wand extends Item {
 		return this.power;
 	}
 	
-	public void lumos() {
+    static void castSpell(String cast) {
+    	switch (cast) {
+		case "alohomora":
+			Wand.alohomora();
+			break;
+		case "lumos":
+			Wand.lumos();
+			break;
+		case "wingardium Leviosa":
+			Wand.wingardiumLeviosa();
+			break;
+		default:
+		}
+    }
+	
+	private static void lumos() {
 		System.out.println("*********************");
 		System.out.println("********LIGHT********");
 		System.out.println("*********************");
@@ -23,13 +38,13 @@ class Wand extends Item {
 		System.out.println("The space around you is now filled with light");
 	}
 	
-	public void alohomora() {
+	private static void alohomora() {
 		System.out.println("########CLICK!########");
 		System.out.println();
 		System.out.println("You have now unlocked something...");	
 	}
 			
-	public void wingardiumLeviosa() {
+	private static void wingardiumLeviosa() {
 	System.out.println("^^^^^^^WHOOSH^^^^^^");
 	System.out.println();
 	System.out.println("The object is now levetating");

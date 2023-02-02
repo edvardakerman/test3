@@ -5,7 +5,9 @@ public class Player {
     private Location Location;
     private Wand wand = new Wand("Wand", "Cast a spell!");
     private ArrayList<Item> items = new ArrayList<Item>() {
-    	{	
+    	private static final long serialVersionUID = 1L;
+
+		{	
     		add(wand);
         }
     };
@@ -50,7 +52,7 @@ public class Player {
             	useItem(arr[1]);
             	break;
             case "cast":
-            	castSpell(arr[1]);
+            	Wand.castSpell(arr[1]);
             	break;
             default: 
                 System.out.println("Unvalid command, type 'help' for more info");
@@ -72,18 +74,6 @@ public class Player {
     	System.out.println("looking..");
     	for (Item item : this.Location.getItems()) {
 	    	System.out.println(item.getName());
-		}
-    }
-    
-    void castSpell(String cast) {
-    	switch (cast) {
-		case "alohomora":
-			this.wand.alohomora();
-			break;
-		case "lumos":
-			this.wand.lumos();
-			break;	
-		default:
 		}
     }
     
