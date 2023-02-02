@@ -37,7 +37,7 @@ class Game {
 	    Herbology.setPath(Courtyard, "north");
 	    
 	    // Create Items
-	    Wearable CloakofInvisibility = new Wearable("Cloak of Invisibility", "With this you can sneak around");
+	    Cloak CloakofInvisibility = new Cloak("Cloak of Invisibility", "With this you can sneak around");
 	    Wand Elderwand = new Wand("Elderwand", "With the Elderwand you can cast even more powerfull spells");
 	    	    
 	    // Assign Items to rooms
@@ -48,6 +48,7 @@ class Game {
 	    
 	    // add to array
 	    locations.add(EntranceHall);
+	    EntranceHall.getNewCount();
     }
 
     public void run() {

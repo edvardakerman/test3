@@ -6,6 +6,7 @@ public class Location {
     private Boolean Locked;
     private Location North, East, South, West;
     private ArrayList<Item> items = new ArrayList<Item>();
+    private int counter = 1;
 
 
     Location(String name, String desc){
@@ -15,6 +16,10 @@ public class Location {
 
     public String getName(){
         return this.Name;
+    }
+    
+    public int getNewCount() {
+    	return this.counter++;
     }
     
     public Boolean getSatus(){

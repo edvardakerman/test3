@@ -101,9 +101,10 @@ public class Player {
     void useItem(String Name){  	
     	for (Item item : this.items) {
     		if (Name.equals(item.getName())) {
+    			// joker ??
     			if(item instanceof Wearable) {
     				  Wearable subClassElem = (Wearable) item;
-    				  subClassElem.wear();
+    				  subClassElem.putOn(subClassElem);
     			}
     		}
 		}
@@ -123,7 +124,7 @@ public class Player {
     	} else {
         	System.out.println("invalid direction");
     	}
-        System.out.println("You are now in " + this.Location.getName() + ", " + this.Location.describeYourself());
+        System.out.println("You are now in " + this.Location.getName() + ", " + this.Location.describeYourself() + ", " + this.Location.getNewCount());
  	
     }
     

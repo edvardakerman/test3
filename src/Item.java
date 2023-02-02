@@ -17,5 +17,4 @@ class Item {
     
     // doCommand ??
     
-    
 }
