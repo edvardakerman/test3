@@ -4,6 +4,7 @@ public class Player {
     private String Name;
     private Location Location;
     private Wand wand = new Wand("Wand", "Cast a spell!");
+    private Wearable wearing;
     private ArrayList<Item> items = new ArrayList<Item>() {
     	private static final long serialVersionUID = 1L;
 
@@ -53,6 +54,7 @@ public class Player {
             	break;
             case "cast":
             	Wand.castSpell(arr[1]);
+
             	break;
             default: 
                 System.out.println("Unvalid command, type 'help' for more info");
@@ -66,8 +68,12 @@ public class Player {
     
     void help(){
     	System.out.println("Valid commands:");
-    	System.out.println("1. move (followed by a direction, east/west/north/south)");
-    	System.out.println("2. spell (followed by a spell, wingardium leviosa)");
+    	System.out.println("1. move  - followed by a direction, east/west/north/south");
+    	System.out.println("2. cast  - followed by a spell, wingardium leviosa");
+    	System.out.println("3. wear  - followed by a wearable item, Cloak of Invisibility");
+    	System.out.println("4. take  - followed by a item, Elderwand");
+    	System.out.println("5. items - Shows what you are currently carring with you");
+    	System.out.println("6. look	 - Shows whats on your current location");
     }
     
     void look(){
@@ -95,6 +101,7 @@ public class Player {
     			if(item instanceof Wearable) {
     				  Wearable subClassElem = (Wearable) item;
     				  subClassElem.putOn(subClassElem);
+    				  this.wearing = subClassElem;
     			}
     		}
 		}
@@ -106,16 +113,36 @@ public class Player {
 	    	System.out.println(item.getName() + ", " + item.getDesc());
 		}
     }
+    
+    private Boolean isLocked(String direction) {
+    	if(this.Location.getPath(direction) instanceof Inside) {
+			if (((Inside) this.Location.getPath(direction)).getStatus()) {
+				return true; 
+			}
+		}
+    	return false;
+    }
+    
 
     void moveTo(String direction){
-    	
+    		
     	if (this.Location.getPath(direction) != null) {
-        	this.Location = this.Location.getPath(direction);
+    		
+    		if (isLocked(direction)) {
+    			System.out.println("The choosen direction is locked, please unlock before entering..");
+    		} else {
+    			this.Location = this.Location.getPath(direction);
+    	        System.out.println("You are now in " + this.Location.getName() + ", " + this.Location.describeYourself());
+    			if(this.Location instanceof Outside) {
+    				((Outside) this.Location).changeWeather();
+    		        System.out.println("The weather is " + Outside.Weather);
+    			}
+    		}		
+    			
     	} else {
         	System.out.println("invalid direction");
     	}
-        System.out.println("You are now in " + this.Location.getName() + ", " + this.Location.describeYourself() + ", " + this.Location.getNewCount());
- 	
-    }
+
+	}
     
 }

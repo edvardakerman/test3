@@ -1,6 +1,4 @@
-
 class Wand extends Item {
-	
 	private int power;
 	
 	Wand(String name, String desc){
@@ -38,10 +36,10 @@ class Wand extends Item {
 		System.out.println("The space around you is now filled with light");
 	}
 	
-	private static void alohomora() {
+	private static void alohomora() {		
 		System.out.println("########CLICK!########");
 		System.out.println();
-		System.out.println("You have now unlocked something...");	
+		System.out.println("You have now unlocked something...");
 	}
 			
 	private static void wingardiumLeviosa() {

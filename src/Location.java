@@ -3,10 +3,9 @@ import java.util.*;
 public class Location {
     private String Name;
     private String Description;
-    private Boolean Locked;
     private Location North, East, South, West;
     private ArrayList<Item> items = new ArrayList<Item>();
-    private int counter = 1;
+    private Boolean visited = false;
 
 
     Location(String name, String desc){
@@ -18,16 +17,12 @@ public class Location {
         return this.Name;
     }
     
-    public int getNewCount() {
-    	return this.counter++;
+    public void setLocToVisited() {
+    	this.visited = true;
     }
     
-    public Boolean getSatus(){
-        return this.Locked;
-    }
-    
-    public void setLock(Boolean lock){
-    	this.Locked = lock;
+    public Boolean getVisited() {
+    	return this.visited;
     }
     
     public void setItem(Item item){

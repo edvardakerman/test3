@@ -1,4 +1,6 @@
 class Wearable extends Item {
+	private Boolean onUser = false;
+	
 	Wearable(String name, String desc){
 		super(name, desc);
 	}
@@ -9,10 +11,16 @@ class Wearable extends Item {
 	}
 	
 	public void putOn(Wearable item){
+		this.onUser = true;
 		item.wear();
 	}
 	
+	public Boolean getOnUser() {
+		return this.onUser;
+	}
+	
 	public void takeOff(){
+		this.onUser = false;
 		System.out.println("You have now take off the " + this.getName());
 	}
 	

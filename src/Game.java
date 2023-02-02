@@ -10,16 +10,16 @@ class Game {
 	    locations = new ArrayList<>();
 	    
 	    // Create Rooms
-	    Location EntranceHall = new Inside("The Entrance Hall", "Welcome to hogwarts, this is the school of magic");
-	    Location GreatHall = new Inside("The Great Hall", "Time to eat?");
-	    Location Hagrids = new Inside("Hagrids Hut", "hagrid says hello");
-	    Location Dorms = new Inside("The Dorms", "Welcome to the student accomidations");
-	    Location Dungens = new Inside("The Dungens", "lock out for trolls");
+	    Inside EntranceHall = new Inside("The Entrance Hall", "Welcome to hogwarts, this is the school of magic");
+	    Inside GreatHall = new Inside("The Great Hall", "Time to eat?");
+	    Inside Hagrids = new Inside("Hagrids Hut", "hagrid says hello");
+	    Inside Dorms = new Inside("The Dorms", "Welcome to the student accomidations");
+	    Inside Dungens = new Inside("The Dungens", "lock out for trolls");
 	    
-	    Location Quad = new Outside("The Quad", "Welcome to the Quad");
-	    Location Herbology = new Outside("Herbology", "Time to grow plants");
-	    Location ForbiddenForest = new Outside("The Forbidden Forest", "Scary, ooooooh");
-	    Location Courtyard = new Outside("The Courtyard", "Time for fresh air");
+	    Outside Quad = new Outside("The Quad", "Welcome to the Quad");
+	    Outside Herbology = new Outside("Herbology", "Time to grow plants");
+	    Outside ForbiddenForest = new Outside("The Forbidden Forest", "Scary, ooooooh");
+	    Outside Courtyard = new Outside("The Courtyard", "Time for fresh air");
 	    
 	    // Create Paths
 	    EntranceHall.setPath(Dorms, "north");
@@ -27,8 +27,8 @@ class Game {
 	    EntranceHall.setPath(Dungens, "west");
 	    EntranceHall.setPath(Quad, "south");
 	    
-	    Dorms.setPath(Courtyard, "north");
 	    Dorms.setPath(GreatHall, "east");
+	    GreatHall.setPath(Courtyard, "east");
 	    
 	    Quad.setPath(Herbology, "east");
 	    Quad.setPath(Hagrids, "west");
@@ -42,13 +42,11 @@ class Game {
 	    	    
 	    // Assign Items to rooms
 	    Dorms.setItem(CloakofInvisibility);
-	    Dungens.setItem(Elderwand);
-	    
-	    
+	    Dungens.setItem(Elderwand);  
 	    
 	    // add to array
 	    locations.add(EntranceHall);
-	    EntranceHall.getNewCount();
+	    EntranceHall.setLocToVisited();
     }
 
     public void run() {
@@ -66,10 +64,6 @@ class Game {
             command = keyboard.nextLine();
             player.doCommand(command);
         }	    
-    }
-
-    public Player getPlayer(){
-        return this.player;
     }
 
     public ArrayList<Location> getLocations(){

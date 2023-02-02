@@ -7,7 +7,7 @@ class Outside extends Location {
 	}
 	
 	public void changeWeather() {
-		String possWeather[] = new String[] { "Sunny", "Cloudy", "Rainy" };
+		String possWeather[] = new String[] { "sunny", "cloudy", "rainy" };
 		Outside.Weather = possWeather[(int) Math.floor(Math.random()*possWeather.length)];
 	}
 }
